@@ -1,0 +1,10 @@
+--- UHDDevice.h	2018-02-10 10:21:28.474083497 -0500
++++ /tmp/UHDDevice.h	2018-02-10 10:14:35.275284355 -0500
+@@ -14,6 +14,7 @@
+ 	B2XX,
+ 	X300,
+ 	UMTRX,
++	LimeSDRMini,
+ 	NUM_USRP_TYPES,
+ };
+ 
