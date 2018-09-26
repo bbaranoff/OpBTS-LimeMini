@@ -1,0 +1,15 @@
+--- a/UMTS/UMTSPhCh.h	2018-09-21 20:55:14.088945237 +0200
++++ b/OpenBTS-UMTS/UMTS/UMTSPhCh.h	2018-09-22 19:43:30.644431445 +0200
+@@ -235,7 +235,11 @@
+ 	DCHFEC *mDch;	// The DPDCH, although we could put the other PhChs in here too. (SCCPCH, PCCPCH, etc)
+ 	bool available(bool checkOnlyReserved);
+ 	bool active(void);
+-	ChannelTreeElt() : mReserved(0), mDch(0) {}
++//	ChannelTreeElt() : mReserved(0), mDch(0) {}
++
++        // @SKS@ Bugfix: wrong not to initialize mAlsoReserved
++//      ChannelTreeElt() : mReserved(0), mReserved(0), mDch(0) {}
++        ChannelTreeElt() : mReserved(0), mAlsoReserved(0), mDch(0) {}
+ };
+ 
+ 

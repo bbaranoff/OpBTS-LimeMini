@@ -1,0 +1,21 @@
+--- a/UMTS/UMTSPhCh.cpp	2018-09-21 20:55:14.088945237 +0200
++++ b/UMTS/UMTSPhCh.cpp	2018-09-22 19:40:52.127358397 +0200
+@@ -789,7 +789,8 @@
+ 			if (badcode ) { *badcode = code; }
+ 			return false;				// in use.
+ 		}
+-		if (!isTierFreeDownward(tier+1,2*startcode,2*width,checkOnlyReserved,badtier,badcode)) {return false;}// something underneath is in use.
++//		if (!isTierFreeDownward(tier+1,2*startcode,2*width,checkOnlyReserved,badtier,badcode)) {return false;}// something underneath is in use.
++		if (!isTierFreeDownward(tier+1,2*code,2,checkOnlyReserved,badtier,badcode)) {return false;}// something underneath is in use.
+ 	}
+ 	return true;		// entire specified sub-tree is free.
+ }
+@@ -919,7 +920,7 @@
+ 			bool active = cte->mDch->phChAllocated();
+ 			bool reserved = cte->mReserved;
+ 			bool alsoReserved = cte->mAlsoReserved;
+-			if (active || reserved) {
++			if (active || reserved  || alsoReserved) {
+ 				os << "PhCh(sf=" <<sf<< ",ch=" <<chcode<< ")=";
+ 				if (reserved) os <<"reserved";
+ 				if (alsoReserved) os <<" alsoReserved";
